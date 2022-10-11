@@ -7,6 +7,16 @@
 #include "prueba.h"
 #include <time.h>
 
+
+int sumaLocal(int a, int b){
+
+	return a + b ;
+
+
+
+}
+
+
 void
 calculadora_prog_1(char *host)
 {
@@ -42,9 +52,8 @@ calculadora_prog_1(char *host)
 	printf("2.Resta\t\t\t\t-"); printf("\n");
 	printf("3.multiplicar\t\t\t*"); printf("\n");
 	printf("4.Dividir\t\t\t/"); printf("\n");
-	printf("6.Test Suma Local\t\tTL"); printf("\n");
-	printf("7.Test Suma Servidor local\tTSL"); printf("\n");
-	printf("8.Test Suma Servidor remoto\tTSR"); printf("\n");
+	printf("6.Test Suma Local\t\tTSL"); printf("\n");
+	printf("7.Test Suma Servidor\t\tTSS"); printf("\n");
 	printf("9.Salir de la aplicación\tEXIT"); printf("\n");
 
 
@@ -92,7 +101,39 @@ calculadora_prog_1(char *host)
 	};
 
 
-	if (strcmp(operador, "TSL")==0){
+	if (strcmp(operador, "*")==0){
+     	
+     	multiplicacion_1_arg.a=a; //asigna el valor de n1 num1
+        multiplicacion_1_arg.b=b; //asigna el valor de n2 num2
+
+		result_3 = multiplicacion_1(&multiplicacion_1_arg, clnt);
+
+		if (result_3 == (int *) NULL) {
+			clnt_perror (clnt, "call failed");
+		}
+
+    	printf("Resultado %i\n",*result_3);
+
+
+	};
+
+	if (strcmp(operador, "/")==0){
+ 	
+	 	division_1_arg.a=a; //asigna el valor de n1 num1
+	    division_1_arg.b=b; //asigna el valor de n2 num2
+
+		result_4 = division_1(&division_1_arg, clnt);
+
+		if (result_4 == (int *) NULL) {
+			clnt_perror (clnt, "call failed");
+	}
+
+	printf("Resultado %i\n",*result_4);
+
+
+	};
+
+	if (strcmp(operador, "TSS")==0){
      	
      	suma_1_arg.a=a; //asigna el valor de n1 num1
         suma_1_arg.b=b; //asigna el valor de n2 num2
@@ -112,8 +153,31 @@ calculadora_prog_1(char *host)
 			clnt_perror (clnt, "call failed");
 		}
 
-    	//printf("Resultado %i\n",*result_1);
+    	printf("Resultado %i\n",*result_1);
 		printf("Tiempo procesamiento %.2f\n",cpu_time_used );
+
+	};
+
+
+
+	if (strcmp(operador, "TSL")==0){
+     
+		int resultSumaLocal;
+
+		start = clock();
+
+        for (int i=0; i<10000;i++){
+
+			resultSumaLocal = sumaLocal(a, b);
+
+        }
+
+		end = clock();
+		cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+
+		
+    	printf("resultSumaLocal %i\n",resultSumaLocal);
+		printf("Tiempo procesamiento %.6f\n",cpu_time_used );
 
 	};
 
@@ -143,6 +207,10 @@ calculadora_prog_1(char *host)
 }
 
 
+
+
+
+
 int
 main (int argc, char *argv[])
 {
@@ -154,9 +222,8 @@ main (int argc, char *argv[])
 	}
 
 
-
-
 	host = argv[1];
+
 	calculadora_prog_1(host);
 
 

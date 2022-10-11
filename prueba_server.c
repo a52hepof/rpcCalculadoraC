@@ -4,6 +4,11 @@
  * as a guideline for developing your own functions.
  */
 
+
+///////////////// si no incluye cambios puede ser porque esté renociendo otro servidor/cliente. Pararlos y volver a ejecutar. $ jobs $kill -9 %<idProceso>
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 #include "prueba.h"
 
 int *
@@ -13,7 +18,7 @@ suma_1_svc(operandos *argp, struct svc_req *rqstp)
 
 	result = argp->a + argp->b;
 
-    printf("Sumando %i + %i = %i\n", argp->a,argp->b,result);
+    //printf("Sumando %i + %i = %i\n", argp->a,argp->b,result);
 
 	return &result;
 }
