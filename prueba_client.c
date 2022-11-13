@@ -135,18 +135,19 @@ calculadora_prog_1(char *host)
 	};
 
 	if (strcmp(operador, "TSS")==0){
-     	
+
+	int repeticiones = 0;
+     	int acumulado = 0;
      	suma_1_arg.a=a; //asigna el valor de n1 num1
         suma_1_arg.b=b; //asigna el valor de n2 num2
 	printf("Indique el número de ejecuciones:\n");
 	scanf("%i",repeticiones );
 
 		start = clock();
-
-        for (int i=0; i<*repeticiones;i++){
+        for (int i=0; i<repeticiones;i++){
 
 			result_1 = suma_1(&suma_1_arg, clnt);
-
+		acumulado = *result_1 + acumulado;
         }
 
 		end = clock();
