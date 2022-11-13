@@ -8,7 +8,7 @@
 #include <time.h>
 #include <unistd.h>
 #include <stdio.h>
-
+#include <sys/time.h>
 int sumaLocal(int a, int b){
 
 	return a + b ;
@@ -136,7 +136,8 @@ calculadora_prog_1(char *host)
 	};
 
 	if (strcmp(operador, "TSS")==0){
-
+		struct timeval start_time, end_time;
+		gettimeofday(&start_time, NULL);
 		int repeticiones = 0;
      		int acumulado = 0;
 		printf("%i", repeticiones);
@@ -151,6 +152,8 @@ calculadora_prog_1(char *host)
 			result_1 = suma_1(&suma_1_arg, clnt);
 			acumulado = *result_1 + acumulado;
         	}
+		gettimeofday(&end_time, NULL);
+		long seconds = (end_time.tv_sec -start_time.tv_sec);
 		time_t end_p = time(NULL);
 		end = clock();
 		cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
@@ -160,7 +163,7 @@ calculadora_prog_1(char *host)
 		}
 
 	    	printf("Resultado %i - %i\n",*result_1,acumulado);
-		printf("Tiempo procesamiento %.6f, %.6f\n",cpu_time_used, (end_p-begin_p) );
+		printf("Tiempo procesamiento %.6f, %.6f , %d\n",cpu_time_used, (end_p-begin_p), seconds );
 
 		};
 
