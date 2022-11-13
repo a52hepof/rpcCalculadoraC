@@ -136,19 +136,20 @@ calculadora_prog_1(char *host)
 
 	if (strcmp(operador, "TSS")==0){
 
-	int repeticiones = 0;
-     	int acumulado = 0;
-     	suma_1_arg.a=a; //asigna el valor de n1 num1
-        suma_1_arg.b=b; //asigna el valor de n2 num2
-	printf("Indique el número de ejecuciones:\n");
-	scanf("%i",repeticiones );
+		int repeticiones = 5;
+     		int acumulado = 0;
+		printf("%i", repeticiones);
+     		suma_1_arg.a=a; //asigna el valor de n1 num1
+        	suma_1_arg.b=b; //asigna el valor de n2 num2
+		printf("Indique el número de ejecuciones:\n");
+		scanf("%i",&repeticiones );
 
 		start = clock();
-        for (int i=0; i<repeticiones;i++){
+        	for (int i=0; i<repeticiones;i++){
 
 			result_1 = suma_1(&suma_1_arg, clnt);
-		acumulado = *result_1 + acumulado;
-        }
+			acumulado = *result_1 + acumulado;
+        	}
 
 		end = clock();
 		cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
@@ -157,10 +158,10 @@ calculadora_prog_1(char *host)
 			clnt_perror (clnt, "call failed");
 		}
 
-    	printf("Resultado %i\n",*result_1);
+	    	printf("Resultado %i - %i\n",*result_1,acumulado);
 		printf("Tiempo procesamiento %.2f\n",cpu_time_used );
 
-	};
+		};
 
 
 
