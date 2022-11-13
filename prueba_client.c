@@ -159,7 +159,7 @@ calculadora_prog_1(char *host)
 		}
 
 	    	printf("Resultado %i - %i\n",*result_1,acumulado);
-		printf("Tiempo procesamiento %.2f\n",cpu_time_used );
+		printf("Tiempo procesamiento %.6f\n",cpu_time_used );
 
 		};
 
@@ -171,11 +171,11 @@ calculadora_prog_1(char *host)
 
 		start = clock();
 
-        for (int i=0; i<10000;i++){
+        	for (int i=0; i<10000;i++){
 
 			resultSumaLocal = sumaLocal(a, b);
-		acumulado = acumulado + resultSumaLocal;
-        }
+			acumulado = acumulado + resultSumaLocal;
+       		 }
 
 		end = clock();
 		cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
