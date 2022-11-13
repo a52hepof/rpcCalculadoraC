@@ -52,9 +52,9 @@ calculadora_prog_1(char *host)
 	printf("2.Resta\t\t\t\t-"); printf("\n");
 	printf("3.multiplicar\t\t\t*"); printf("\n");
 	printf("4.Dividir\t\t\t/"); printf("\n");
-	printf("6.Test Suma Local\t\tTSL"); printf("\n");
-	printf("7.Test Suma Servidor\t\tTSS"); printf("\n");
-	printf("9.Salir de la aplicación\tEXIT"); printf("\n");
+	printf("5.Test Suma Local\t\tTSL"); printf("\n");
+	printf("6.Test Suma Servidor\t\tTSS"); printf("\n");
+	printf("99.Salir de la aplicación\tEXIT"); printf("\n");
 
 
     scanf("%s", operador);
