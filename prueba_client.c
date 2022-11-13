@@ -154,6 +154,7 @@ calculadora_prog_1(char *host)
         	}
 		gettimeofday(&end_time, NULL);
 		long seconds = (end_time.tv_sec -start_time.tv_sec);
+		long micros = ((seconds * 1000000)+end_time.tv_usec)-(start_time.tv_usec);
 		time_t end_p = time(NULL);
 		end = clock();
 		cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
@@ -163,7 +164,7 @@ calculadora_prog_1(char *host)
 		}
 
 	    	printf("Resultado %i - %i\n",*result_1,acumulado);
-		printf("Tiempo procesamiento %.6f, %.6f , %d\n",cpu_time_used, (end_p-begin_p), seconds );
+		printf("Tiempo procesamiento %.6f segundos, %d segundos, %d microsegundos\n",cpu_time_used,  seconds, micros );
 
 		};
 
