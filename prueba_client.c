@@ -140,7 +140,7 @@ calculadora_prog_1(char *host)
 
 		start = clock();
 
-        for (int i=0; i<10000;i++){
+        for (int i=0; i<100;i++){
 
 			result_1 = suma_1(&suma_1_arg, clnt);
 
